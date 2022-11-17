@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    </head>
+    <body>
+        <a-scene>
+            <a-sky src="sky.jpg"></a-sky>
+            <a-camera></a-camera>
+
+            <!-------------------------------------------Asset Management------------------------------------------->
+            <!--timeout attribute with the given value set in milliseconds is the time the scene is going to wait until it starts all the assets in the scene-->
+            <a-assets timeout="10000">
+                <a-asset-item id="girl" src="./girl/scene.gltf"></a-asset-item>
+                <a-asset-item id="bench" src="./bench/scene.gltf"></a-asset-item>
+                <a-asset-item id="tree" src="./tree/scene.gltf"></a-asset-item>
+                <a-asset-item id="lamppost" src="./lamppost/scene.gltf"></a-asset-item>
+                <a-asset-item id="cat" src="./cat/scene.gltf"></a-asset-item>
+            </a-assets>
+
+            <!-------------------------------------Lights in the scene----------------------------------------------->
+            <!--Ambient-->
+            <a-entity light="type: ambient; intensity: 0.5"></a-entity>
+            
+            <!--Directional-->
+            <!--decay is the amount of light that starts to dim along the distance-->
+            <!--distance is when the intensity becomes 0 that means the light will end there-->
+            <a-entity light="type: directional; intensity: 1; distance: 50; decay: 2; color: orange" position="-120 1100 20"></a-entity>
+
+            <!-------------------------------------Circular Plane----------------------------------------------->
+            <a-circle position="-0.4 -0.76 -25" rotation="-90 0 0" radius="100" shadow="receive: true" visible="true" src="ground.jpg"></a-circle>
+
+            <!--------------------------------------GLTF Models----------------------------------------------------------->
+            <!--Girl-->
+            <a-entity>
+                <a-entity position="-5 0 0" rotation="0 90 0" scale="1.5 1.5 1.5" gltf-model="#girl" shadow="cast: true;">
+                </a-entity>
+            </a-entity>
+            <!--Bench-->
+            <a-entity>
+                <a-entity position="-7 0 -2" rotation="0 270 0" scale="0.009 0.009 0.009" gltf-model="#bench" shadow="cast: true"></a-entity>
+            </a-entity>
+            <!--Lamppost-->
+            <a-entity>
+                <a-entity position="-7 0 1" rotation="0 90 0" scale="0.05 0.05 0.05" gltf-model="#lamppost" shadow="cast: true"></a-entity>
+            </a-entity>
+            <!--Tree-->
+            <a-entity>
+                <a-entity position="-7 0 -4" rotation="0 55 0" scale="0.005 0.005 0.005" gltf-model="#tree" shadow="cast:true"></a-entity>
+            </a-entity>
+            <!--Cat-->
+            <a-entity>
+                <a-entity position="-5 0 -1" rotation="0 55 0" scale="0.2 0.2 0.2" gltf-model="#cat" shadow="cast:true"></a-entity>
+            </a-entity>
+        </a-scene>
+    </body>
+</html>
